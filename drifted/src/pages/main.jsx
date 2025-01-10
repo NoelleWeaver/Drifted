@@ -1,6 +1,7 @@
 import { useState } from "react";
 import './css/main.css';
 import React from 'react'
+import Footer from "../components/Footer";
 
 export const main = () => {
   return (
@@ -12,6 +13,7 @@ export const main = () => {
       <div className="blog-container">
         <h1 className="places-title">Places</h1>
       </div>
+      <Footer />
     </>
   )
 }

@@ -14,7 +14,6 @@ const Comment = ({comment, replies, currentUserId, deleteComment}) => {
                 <div className="comment-text">{comment.body}</div>
                 <div className="comment-actions">
                     <div className="comment-action">Reply</div>
-                    <div className="comment-action">Edit</div>
                     <div className="comment-action" onClick={() => deleteComment(comment.id)}>Delete</div>
                 </div>
                 {replies.length > 0 && (
