@@ -16,6 +16,8 @@ body{
     height: 100vh;
     width: 130vw;
     margin-left: -24%;
+    position: relative;
+    margin-top: -5.2rem;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 

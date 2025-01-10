@@ -1,0 +1,75 @@
+
+.navbarContainer {
+    display: grid;
+    position: relative;
+    z-index: 15;
+    width: 100vw;
+    height: 10vh;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.navbarLogo {
+    width: 4rem;
+    height: 4rem;
+    padding: 2rem;
+    align-self: center;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+
+.navbarLinks {
+    display: inline;
+    margin-left: 20%;
+    margin-top: 2rem;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.navbarLinks a {
+    padding-left: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    color: black;
+}
+.searchContainer {
+    display: inline;
+    justify-self: center;
+    margin-left: 55%;
+    margin-top: 2rem;
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+}
+
+.searchButton {
+    background-color: transparent;
+    border: none;
+}
+.searchImg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.searchInput {
+    background-color: transparent;
+    border: none;
+}
+
+.searchInput::placeholder{
+    color: black;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-align: left;
+}
+
+.searchInput:focus {
+    outline: none;
+}
+
+.navbarLineBreak{
+    width: 85vw;
+    height: 0.5vh;
+    background-color: black;
+    border-radius: 20px;
+    justify-self: center;
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+}
