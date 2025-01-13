@@ -13,7 +13,7 @@ const Comment = ({comment, replies, currentUserId, deleteComment}) => {
                 </div>
                 <div className="comment-text">{comment.body}</div>
                 <div className="comment-actions">
-                    <div className="comment-action">Reply</div>
+                    <div className="comment-action"><img src="https://res.cloudinary.com/dynkv0p8x/image/upload/v1736472518/reply_l7tcp6.png" /></div>
                     <div className="comment-action" onClick={() => deleteComment(comment.id)}>Delete</div>
                 </div>
                 {replies.length > 0 && (

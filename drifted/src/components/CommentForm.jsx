@@ -10,8 +10,8 @@ const CommentForm = ({handleSubmit, submitLabel}) => {
     }
     return (
         <form onSubmit={onSubmit}>
-            <input className="comment-form-input" value={text} onChange={(e) => setText(e.target.value)} />
-            <button ClassName="comment-form-button" disabled={isInputDisabled}>{submitLabel}</button>
+            <input className="comment-form-input" placeholder="Write a Message..." value={text} onChange={(e) => setText(e.target.value)} />
+            <button className="comment-form-button" disabled={isInputDisabled}>{submitLabel}<img src="https://res.cloudinary.com/dynkv0p8x/image/upload/v1736472516/up-arrow_r5a38t.png" /></button>
         </form>
     )
 }

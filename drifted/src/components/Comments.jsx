@@ -32,8 +32,7 @@ const Comments = ({currentUserId}) => {
                     <Comment key={rootComment.id} comment={rootComment} replies={getReplies(rootComment.id)} currentUserId={currentUserId} deleteComment={deleteComment} />
                 ))}
             </div>
-            <div className="comment-form-title">Write a message</div>
-            <CommentForm submitLabel="Write" handleSubmit={addComment} />
+            <CommentForm handleSubmit={addComment} />
         </div>
     )
 }
