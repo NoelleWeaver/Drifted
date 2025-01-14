@@ -1,89 +1,222 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
+const LoadingSkeleton = () => (
+    <div className="animate-pulse bg-gray-200 w-full h-64 rounded-lg"></div>
+);
 const Gallery = ({
     pictures = [
+        // Tokyo, Japan
         { 
-            name: "Mountains", 
-            url: "https://plus.unsplash.com/premium_photo-1675629118861-dc8aa2acea74?q=80&w=1934&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+            name: "Sunset in Tokyo",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736374022/sunset_j9265t.jpg",
+            description: "A beautiful sunset view over the Tokyo skyline"
         },
-        { 
-            name: "Sunset", 
-            url: "https://images.unsplash.com/photo-1494459940152-1e911caa8cc5?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Kyoto Temple",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736374020/kyoto_beusnt.jpg",
+            description: "Traditional temple architecture in Kyoto"
         },
-        { 
-            name: "Autumn", 
-            url: "https://images.unsplash.com/photo-1637016860934-552f2c28b35f?q=80&w=1915&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Cherry Blossoms",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736374022/sakura_l2yx19.jpg",
+            description: "Sakura trees in full bloom"
         },
-        { 
-            name: "Grass", 
-            url: "https://images.unsplash.com/photo-1458441087617-24d758e383f1?q=80&w=1973&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Japanese Restaurant",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736374022/resturant_ei48bi.jpg",
+            description: "Traditional Japanese dining experience"
         },
-        { 
-            name: "Mesa", 
-            url: "https://images.unsplash.com/photo-1509316785289-025f5b846b35?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Shibuya Crossing",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736374021/major-crossing_hxhnhl.jpg",
+            description: "The famous Shibuya pedestrian crossing"
         },
-        { 
-            name: "City", 
-            url: "https://images.unsplash.com/photo-1502514276381-1ea51dfe201c?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Osaka Street",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736374021/osaka_bwwmz2.jpg",
+            description: "Vibrant street life in Osaka"
         },
-        { 
-            name: "Snow", 
-            url: "https://images.unsplash.com/photo-1491864483946-1f06be97b71d?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "City Bus",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736805735/bus_ibkdjm.jpg",
+            description: "Public transportation in Japan"
         },
-        { 
-            name: "Beach", 
-            url: "https://images.unsplash.com/photo-1504681869696-d977211a5f4c?q=80&w=1852&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Garden Pond",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736374022/pond_n28epa.jpg",
+            description: "Tranquil Japanese garden pond"
         },
-        { 
-            name: "Flowers", 
-            url: "https://plus.unsplash.com/premium_photo-1709492256417-816ffcb88cc5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Rainy Day",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736806599/rain_atrh47.jpg",
+            description: "Atmospheric rainy street scene"
         },
-        { 
-            name: "Forest", 
-            url: "https://images.unsplash.com/photo-1426170042593-200f250dfdaf?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Torii Gates",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736806664/red-gates_ahk7me.jpg",
+            description: "Traditional red Torii gates"
         },
-        { 
-            name: "Meadow", 
-            url: "https://images.unsplash.com/photo-1617067128946-8c4f807d91e1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Night Lights",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736832315/night-lights-town_tf8luj.jpg",
+            description: "City lights illuminating the night"
         },
-        { 
-            name: "Lake", 
-            url: "https://images.unsplash.com/photo-1557456170-0cf4f4d0d362?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Street Performance",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736832313/man-with-aura_bxycrv.jpg",
+            description: "Urban street performance"
         },
-        { 
-            name: "Volcano", 
-            url: "https://plus.unsplash.com/premium_photo-1679329103267-624f9775f317?q=80&w=1854&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Festival Scene",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736832304/festival_mps8hn.jpg",
+            description: "Traditional Japanese festival"
         },
-        { 
-            name: "Underwater", 
-            url: "https://images.unsplash.com/photo-1533713692156-f70938dc0d54?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Colorful Display",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736832111/colorful_qre0eo.jpg",
+            description: "Vibrant colors of urban Japan"
         },
-        { 
-            name: "Cliff", 
-            url: "https://images.unsplash.com/photo-1498889444388-e67ea62c464b?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            description: "Add description here"
+        {
+            name: "Neighborhood Street",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736832317/neighborhood-street_rpv9zg.jpg",
+            description: "Quiet residential area"
+        },
+        {
+            name: "Riverside Scene",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736832316/trees_and_river_gaxk9h.jpg",
+            description: "Peaceful riverside with trees"
+        },
+        {
+            name: "Mount Fuji",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736832314/mt.fuji_xtsxch.jpg",
+            description: "Majestic view of Mount Fuji"
+        },
+        {
+            name: "Subway Station",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736832481/subway_swohty.jpg",
+            description: "Modern subway transportation"
+        },
+        {
+            name: "Urban Street",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736832750/street_unwas2.jpg",
+            description: "Busy urban street scene"
+        },
+        {
+            name: "Happy Moment",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736832751/happy_tvkqm4.jpg",
+            description: "Joyful urban life"
+        },
+
+        // New York, USA
+        {
+            name: "City Towers",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736374024/towers_iwrscp.jpg",
+            description: "New York's impressive skyline"
+        },
+        {
+            name: "Wall Street",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736833251/wall-street_wyzoh5.jpg",
+            description: "Financial district of Manhattan"
+        },
+        {
+            name: "City Welcome",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736833455/new-york-sign_jh5gio.jpg",
+            description: "Welcome to New York sign"
+        },
+        {
+            name: "City Street",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736833250/nice-looking-street_piipq7.jpg",
+            description: "Characteristic New York street"
+        },
+        {
+            name: "Statue of Liberty",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736833249/liberty_l9q6cp.jpg",
+            description: "Symbol of freedom and democracy"
+        },
+        {
+            name: "Brooklyn Bridge",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736833250/cool-bridge_dirgcg.jpg",
+            description: "Iconic Brooklyn Bridge"
+        },
+        {
+            name: "Rainy Street",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736832936/rainy-street_ljr0jo.jpg",
+            description: "New York in the rain"
+        },
+        {
+            name: "Times Square",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736833455/advertistments_etle4x.jpg",
+            description: "Bright lights of Times Square"
+        },
+        {
+            name: "City Sunset",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736833252/sunset_sfnvtz.jpg",
+            description: "Sunset over Manhattan"
+        },
+        {
+            name: "Night Lights",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736833460/abunch-of-lights_mqm7ux.jpg",
+            description: "City that never sleeps"
+        },
+
+        // Paris, France
+        {
+            name: "Paris Overview",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736833875/paris_ryr3gd.jpg",
+            description: "Panoramic view of Paris"
+        },
+        {
+            name: "French Architecture",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736834611/more-buildings_lxm6ao.jpg",
+            description: "Classic French buildings"
+        },
+        {
+            name: "Parisian Street",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736834518/something-french_jkfcvn.jpg",
+            description: "Charming street in Paris"
+        },
+        {
+            name: "Clock Tower",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736834613/pretty-clock_hvidvu.jpg",
+            description: "Historic clock tower"
+        },
+        {
+            name: "Historic Building",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736834516/some-important-building_d0uhrt.jpg",
+            description: "Important historical landmark"
+        },
+
+        // Bangkok, Thailand
+        {
+            name: "Bangkok Cityscape",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736834781/thailand_pgcjcs.jpg",
+            description: "Modern Bangkok skyline"
+        },
+        {
+            name: "River Market",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736836571/woman-on-boat_xzmjem.jpg",
+            description: "Traditional floating market"
+        },
+        {
+            name: "Coastal View",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736836570/ocean_uxotuj.jpg",
+            description: "Beautiful Thai coastline"
+        },
+        {
+            name: "Temple Complex",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736836575/yemple_chnin2.jpg",
+            description: "Ancient Buddhist temple"
+        },
+        {
+            name: "Street Scene",
+            url: "https://res.cloudinary.com/dynkv0p8x/image/upload/v1736836583/pretty_wevoi3.jpg",
+            description: "Vibrant street life in Bangkok"
         }
     ]
 }) => {
     return (
-        // Make sure Tailwind is installed and set in your config for the given effect
         <div className="p-5 md:p-10">
             <div className="columns-1 gap-5 lg:gap-8 sm:columns-2 lg:columns-3 xl:columns-4 [&>div:not(:first-child)]:mt-5 lg:[&>div:not(:first-child)]:mt-8">
-                {/* This takes all the pictures and sets it into a masonary grid */}
                 {pictures.map((picture, index) => (
                     <div 
                         key={index} 
@@ -112,6 +245,5 @@ const Gallery = ({
         </div>
     )
 }
-
 
 export default Gallery

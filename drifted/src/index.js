@@ -4,7 +4,8 @@ import './pages/css/index.css';
 import './pages/css/comment.css';
 import Main from './pages/main';
 import Blog from './pages/blog';
-import Gallery from './pages/gallerypage';
+import Gallery from './pages/gallerypages';
+import About from './pages/aboutpage'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   { 
     path: '/gallery', 
     element: <Gallery /> 
+  },
+  {
+    path: '/about', 
+    element: <About /> 
   }
 ]);
 
