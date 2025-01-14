@@ -1,6 +1,6 @@
 import React from "react";
-import './Gallery.css';
-import "blog-data.json"
+import '../pages/css/gallery.css';
+import "../blog-data.json"
 
 export default function GalleryComponent({ 
   pic2, pic3, pic4, pic5, pic6, pic7, pic8, pic9, pic11, pic12, pic13, 
