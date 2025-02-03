@@ -4,7 +4,8 @@ import React from 'react'
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
 import blog from "../blog-data.json"
-import BlogPost from "../components/BlogPost";
+import BlogPost from "../components/BlogPage";
+import Blog from '../components/BlogPost'
 
 export const main = () => {
   return (
@@ -19,7 +20,7 @@ export const main = () => {
       </div>
       {blog.map((post)=> {
         return (
-          <div className="hi" key={post.id}><a href={`/blog/${post.id}`}></a></div>
+          <div className="hi" key={post.id}><a href={`/blog/${post.id}`}>< BlogPost/></a></div>
         )
       })}
       

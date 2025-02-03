@@ -10,15 +10,16 @@ body{
     display: inline;
     justify-content: center;
     align-items: center;
-    width: 200vw;
+    width: 300vw;
     height: auto;
+    object-fit: cover;
 }
 
 .main{
     height: 100vh;
-    width: 280rem;
+    width: 300rem;
+    object-fit: cover;
     position: relative;
-    margin-left: -5%;
     margin-top: -5.2rem;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
@@ -32,7 +33,7 @@ body{
 }
 
 .hi{
-    background-color: red;
+    background-color: rgb(168, 168, 168);
     width: 5vw;
     height: 1vh;
 }
