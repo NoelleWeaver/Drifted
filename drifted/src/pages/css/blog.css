@@ -1,0 +1,33 @@
+.blog-top-img {
+    width: 50vw;
+    height: 60vh;
+    border-radius: 3rem;
+    margin-left: 5rem;
+    display: inline-block;
+    margin-top: -15rem;
+}
+
+.blog-content {
+    width: 30vw;
+    margin-left: 5rem;
+    display: inline-block;
+    margin-top: 2rem;
+}
+
+.big-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+.small-title{
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.date {
+    margin-bottom: 1rem;
+}
+
+.comments-blog {
+    margin-bottom: 5rem;
+}
